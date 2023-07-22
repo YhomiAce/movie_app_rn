@@ -1,11 +1,10 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import { fallbackPersonImage, image185 } from "../api/moviedb";
 
 const CastList = ({ casts }) => {
   const { navigate } = useNavigation();
-  let personName = "Keanu Reevs";
-  let characterName = "John Wick";
   const gotoCharacter = (character) => {
     navigate("Character", character);
   };
@@ -29,19 +28,19 @@ const CastList = ({ casts }) => {
                   <Image
                     className="rounded-2xl h-24 w-20"
                     source={{
-                      uri: "https://marketplace.canva.com/EAFH3gODxw4/1/0/1131w/canva-black-%26-white-modern-mystery-forest-movie-poster-rLty9dwhGG4.jpg",
+                      uri: image185(person?.profile_path) || fallbackPersonImage,
                     }}
                   />
                 </View>
                 <Text className="text-white text-xs mt-1">
-                  {characterName.length > 10
-                    ? characterName.slice(0, 10) + "..."
-                    : characterName}
+                  {person.character.length > 10
+                    ? person.character.slice(0, 10) + "..."
+                    : person.character}
                 </Text>
                 <Text className="text-neutral-400 text-xs mt-1">
-                  {personName.length > 10
-                    ? personName.slice(0, 10) + "..."
-                    : personName}
+                  {person.name.length > 10
+                    ? person.name.slice(0, 10) + "..."
+                    : person.name}
                 </Text>
               </TouchableOpacity>
             );

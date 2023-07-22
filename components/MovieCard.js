@@ -6,6 +6,7 @@ import {
   Image,
 } from "react-native";
 import React from "react";
+import { image500 } from "../api/moviedb";
 
 var { width, height } = Dimensions.get("window");
 const MovieCard = ({ item, pressHandler }) => {
@@ -13,7 +14,7 @@ const MovieCard = ({ item, pressHandler }) => {
     <TouchableWithoutFeedback onPress={pressHandler}>
       <Image
         source={{
-          uri: "https://marketplace.canva.com/EAFH3gODxw4/1/0/1131w/canva-black-%26-white-modern-mystery-forest-movie-poster-rLty9dwhGG4.jpg",
+          uri: image500(item.poster_path)
         }}
         style={{
           width: width * 0.6,
